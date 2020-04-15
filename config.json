@@ -1,0 +1,9 @@
+{
+    "orderedBuildDirectories": [
+        "/openlmis-auth-ui",
+        "/openlmis-referencedata-ui",
+        "/openlmis-ui-components",
+        "/openlmis-ui-layout"
+    ],
+    "pcmtServiceUrl":"/"
+}
