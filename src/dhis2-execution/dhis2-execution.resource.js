@@ -19,29 +19,39 @@
 
     /**
      * @ngdoc service
-     * @name dhis2.ProcessingPeriodResource
+     * @name dhis2-execution.ExecutionResource
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
+     * Implementation of the ExecutionResource interface. Communicates with the REST API of the OpenLMIS
      * server.
      */
 
     angular
-        .module('dhis2')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .module('dhis2-execution')
+        .factory('ExecutionResource', ExecutionResource);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    ExecutionResource.$inject = [
+        'OpenlmisResource', 'classExtender'
+    ];
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+    function ExecutionResource(OpenlmisResource, classExtender) {
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
+        classExtender.extend(ExecutionResource, OpenlmisResource);
 
-        return ProcessingPeriodResource;
+        ExecutionResource.prototype.startManualExecution = startManualExecution;
 
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
+        return ExecutionResource;
+
+        function ExecutionResource() {
+            this.super('/api/integrationExecutions', {
                 paginated: true
             });
+            this.originalCreate = OpenlmisResource.prototype.create;
         }
+
+        function startManualExecution(manualExecution) {
+            return this.originalCreate(manualExecution);
+        }
+
     }
 })();

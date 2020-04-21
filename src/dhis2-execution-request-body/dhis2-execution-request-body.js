@@ -19,29 +19,34 @@
 
     /**
      * @ngdoc service
-     * @name dhis2.ProcessingPeriodResource
+     * @name dhis2-execution-request-body.RequestBody
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
+     * Represents a single execution item.
      */
-
     angular
-        .module('dhis2')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .module('dhis2-execution-request-body')
+        .factory('RequestBody', RequestBody);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    function RequestBody() {
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+        return RequestBody;
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
-
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
+        /**
+         * @ngdoc method
+         * @methodOf dhis2-execution-request-body.RequestBody
+         * @name RequestBody
+         *
+         * @description
+         * Creates a new instance of the RequestBody class.
+         *
+         * @param  {Object} json the object that hold requestBody info
+         * @return {Object}      the requestBody object
+         */
+        function RequestBody(json) {
+            this.description = json.description;
+            this.facilities = json.facilities;
+            this.reportingPeriod = json['reporting-period'];
         }
     }
 })();

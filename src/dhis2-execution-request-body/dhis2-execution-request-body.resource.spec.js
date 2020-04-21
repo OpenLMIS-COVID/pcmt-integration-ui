@@ -13,35 +13,26 @@
  * http://www.gnu.org/licenses.  For additional information contact info@OpenLMIS.org. 
  */
 
-(function() {
+describe('RequestBodyResource', function() {
 
-    'use strict';
+    beforeEach(function() {
+        this.OpenlmisResourceMock = jasmine.createSpy('OpenlmisResource');
 
-    /**
-     * @ngdoc service
-     * @name dhis2.ProcessingPeriodResource
-     *
-     * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
-     */
-
-    angular
-        .module('dhis2')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
-
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
-
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
-
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
-
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
+        var OpenlmisResourceMock = this.OpenlmisResourceMock;
+        module('dhis2-execution-request-body', function($provide) {
+            $provide.factory('OpenlmisResource', function() {
+                return OpenlmisResourceMock;
             });
-        }
-    }
-})();
+        });
+
+        inject(function($injector) {
+            this.RequestBodyResource = $injector.get('RequestBodyResource');
+        });
+    });
+
+    it('should extend OpenlmisResource', function() {
+        new this.RequestBodyResource();
+
+        expect(this.OpenlmisResourceMock).toHaveBeenCalledWith('/api/integrationExecutions/:id/request');
+    });
+});

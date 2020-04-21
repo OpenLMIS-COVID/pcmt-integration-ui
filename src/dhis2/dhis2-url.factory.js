@@ -19,29 +19,40 @@
 
     /**
      * @ngdoc service
-     * @name dhis2.ProcessingPeriodResource
+     * @name dhis2.dhis2UrlFactory
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
+     * Supplies application with dhis2 URL.
      */
-
     angular
         .module('dhis2')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .factory('dhis2UrlFactory', factory);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    factory.$inject = ['openlmisUrlFactory', 'pathFactory'];
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+    function factory(openlmisUrlFactory, pathFactory) {
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
+        var dhis2Url = '@@DHIS2_SERVICE_URL';
 
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
+        if (dhis2Url.substr(0, 2) === '@@') {
+            dhis2Url = '';
         }
+
+        /**
+         * @ngdoc method
+         * @methodOf dhis2.dhis2UrlFactory
+         * @name dhis2UrlFactory
+         *
+         * @description
+         * It parses the given URL and appends dhis2 service URL to it.
+         *
+         * @param  {String} url dhis2 URL from grunt file
+         * @return {String}     dhis2 URL
+         */
+        return function(url) {
+            url = pathFactory(dhis2Url, url);
+            return openlmisUrlFactory(url);
+        };
     }
+
 })();

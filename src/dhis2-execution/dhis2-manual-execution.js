@@ -19,29 +19,35 @@
 
     /**
      * @ngdoc service
-     * @name dhis2.ProcessingPeriodResource
+     * @name dhis2-execution.ManualExecution
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
+     * Represents a single execution item.
      */
-
     angular
-        .module('dhis2')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .module('dhis2-execution')
+        .factory('ManualExecution', ManualExecution);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    function ManualExecution() {
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+        return ManualExecution;
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
-
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
+        /**
+         * @ngdoc method
+         * @methodOf dhis2-execution.ManualExecution
+         * @name ManualExecution
+         *
+         * @description
+         * Creates a new instance of the ManualExecution class.
+         *
+         * @param  {Object} json the object that hold manual execution info
+         * @return {Object}      the manual execution object
+         */
+        function ManualExecution(json) {
+            this.facilityId = json.facilityId;
+            this.programId = json.programId;
+            this.periodId = json.periodId;
+            this.description = json.description;
         }
     }
 })();

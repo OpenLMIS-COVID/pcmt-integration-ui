@@ -17,31 +17,28 @@
 
     'use strict';
 
-    /**
-     * @ngdoc service
-     * @name dhis2.ProcessingPeriodResource
-     *
-     * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
-     */
-
     angular
-        .module('dhis2')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .module('dhis2-configuration-add')
+        .config(dhis2ConfigurationAddRoutes);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    dhis2ConfigurationAddRoutes.$inject = ['modalStateProvider'];
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+    function dhis2ConfigurationAddRoutes(modalStateProvider) {
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
+        modalStateProvider.state('openlmis.administration.dhis2.configurations.add', {
+            controller: 'ConfigurationAddEditController',
+            controllerAs: 'vm',
+            templateUrl: 'dhis2-configuration-add/dhis2-configuration-add.html',
+            url: '/add',
+            resolve: {
+                configuration: function(Configuration) {
+                    return new Configuration({
+                        authenticationDetails: {}
+                    });
+                }
+            }
+        });
 
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
-        }
     }
+
 })();
