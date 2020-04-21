@@ -19,29 +19,35 @@
 
     /**
      * @ngdoc service
-     * @name pcmt.ProcessingPeriodResource
+     * @name pcmt-configuration.Configuration
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
+     * Represents a single configuration item.
      */
-
     angular
-        .module('pcmt')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .module('pcmt-configuration')
+        .factory('Configuration', Configuration);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    function Configuration() {
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+        return Configuration;
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
-
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
+        /**
+         * @ngdoc methods
+         * @methodOf pcmt-configuration.Configuration
+         * @name Configuration
+         *
+         * @description
+         * Creates a new instance of the Configuration class.
+         *
+         * @param  {Object} json the object that hold configuration info
+         * @return {Object}      the configuration object
+         */
+        function Configuration(json) {
+            this.id = json.id;
+            this.name = json.name;
+            this.targetUrl = json.targetUrl;
+            this.authenticationDetails = json.authenticationDetails;
         }
     }
 })();

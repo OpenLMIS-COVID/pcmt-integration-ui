@@ -13,35 +13,28 @@
  * http://www.gnu.org/licenses.  For additional information contact info@OpenLMIS.org. 
  */
 
-(function() {
+describe('ConfigurationResource', function() {
 
-    'use strict';
+    beforeEach(function() {
+        this.OpenlmisResourceMock = jasmine.createSpy('OpenlmisResource');
 
-    /**
-     * @ngdoc service
-     * @name pcmt.ProcessingPeriodResource
-     *
-     * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
-     */
-
-    angular
-        .module('pcmt')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
-
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
-
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
-
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
-
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
+        var OpenlmisResourceMock = this.OpenlmisResourceMock;
+        module('pcmt-configuration', function($provide) {
+            $provide.factory('OpenlmisResource', function() {
+                return OpenlmisResourceMock;
             });
-        }
-    }
-})();
+        });
+
+        inject(function($injector) {
+            this.ConfigurationResource = $injector.get('ConfigurationResource');
+        });
+    });
+
+    it('should extend OpenlmisResource', function() {
+        new this.ConfigurationResource();
+
+        expect(this.OpenlmisResourceMock).toHaveBeenCalledWith('/api/integrationConfigurations', {
+            paginated: true
+        });
+    });
+});

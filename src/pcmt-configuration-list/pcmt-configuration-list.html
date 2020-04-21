@@ -1,0 +1,34 @@
+
+<section class="openlmis-table-container">
+        <button type="text" class="add" ui-sref='.add'>{{'pcmtConfigurationList.addConfiguration' | message}}</button>
+        <table>
+            <caption ng-if="!vm.configurations || vm.configurations.length === 0">
+                {{'pcmtConfigurationList.noConfigurations' | message}}
+            </caption>
+            <thead>
+                <tr>
+                    <th>{{'pcmtConfigurationList.name' | message}}</th>
+                    <th>{{'pcmtConfigurationList.targetUrl' | message}}</th>
+                    <th>{{'pcmtConfigurationList.authenticationDetails' | message}}</th>
+                    <th>{{'pcmtConfigurationList.actions' | message}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="configuration in vm.configurations">
+                    <td>{{configuration.name}}</td>
+                    <td>{{configuration.targetUrl}}</td>
+                    <td ng-if="configuration.authenticationDetails">
+                        {{configuration.authenticationDetails.type}}
+                    </td>
+                    <td ng-if="!configuration.authenticationDetails"></td>
+                    <td>
+                        <button class="primary" ui-sref='.edit({id: configuration.id})'>{{'pcmtConfigurationList.edit' | message}}</button>
+                        <button class="danger" ng-click="vm.deleteConfiguration(configuration)">{{'pcmtConfigurationList.delete' | message}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <openlmis-pagination
+            list="vm.configurations"
+            paged-list="vm.items"/>
+    </section>

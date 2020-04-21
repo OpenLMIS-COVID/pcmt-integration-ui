@@ -18,30 +18,13 @@
     'use strict';
 
     /**
-     * @ngdoc service
-     * @name pcmt.ProcessingPeriodResource
+     * @module pcmt-integration-execute
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
+     * Responsible for providing integration service.
      */
+    angular.module('pcmt-integration-execute', [
+        'pcmt-execution'
+    ]);
 
-    angular
-        .module('pcmt')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
-
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
-
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
-
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
-
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
-        }
-    }
 })();

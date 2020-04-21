@@ -1,0 +1,6 @@
+{
+    "pcmt.serviceName": "PCMT Integration",
+    "pcmt.executions": "Logs",
+    "pcmt.integrations": "Schedule Integration",
+    "pcmt.configurations": "Configuration"
+}

@@ -1,0 +1,72 @@
+<button type="text" ng-click="vm.refreshPage()">{{'pcmtExecutionList.refresh' | message}}</button>
+
+<section class="openlmis-table-container">
+    <h2>{{'pcmtExecutionList.queueItems' | message}}</h2>
+    <table>
+        <caption ng-if="!vm.queueItems || vm.queueItems.length === 0">
+            {{ 'pcmtExecutionList.queueItems.isEmpty' | message }}
+        </caption>
+        <thead>
+            <tr>
+                <th popover="{{'pcmtExecutionList.executionTime.description' | message}}" popover-trigger-area="element">
+                    {{'pcmtExecutionList.executionTime' | message}}
+                </th>
+                <th>{{'pcmtExecutionList.relevantPeriod' | message}}</th>
+                <th popover="{{'pcmtExecutionList.requestedBy.description' | message}}" popover-trigger-area="element">
+                    {{'pcmtExecutionList.requestedBy' | message}}
+                </th>
+                <th>{{'pcmtExecutionList.description' | message}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="queueItem in vm.queueItems">
+                <td>{{queueItem.executionTime | openlmisDatetime}}</td>
+                <td>{{vm.periods[queueItem.processingPeriodId].name}}</td>
+
+                <td ng-if="queueItem.userId">{{vm.showUser(vm.usersMap[queueItem.userId])}}</td>
+                <td ng-if="!queueItem.userId">{{'pcmtExecutionList.executedBy.system' | message}}</td>
+
+                <td>{{queueItem.description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="openlmis-table-container">
+    <h2>{{'pcmtExecutionList.executionList' | message}}</h2>
+    <table>
+        <caption ng-if="!vm.executions || vm.executions.length === 0">
+            {{'pcmtExecutionList.noExecutions' | message}}
+        </caption>
+        <thead>
+            <tr>
+                <th>{{'pcmtExecutionList.startDate' | message}}</th>
+                <th>{{'pcmtExecutionList.endDate' | message}}</th>
+                <th>{{'pcmtExecutionList.relevantPeriod' | message}}</th>
+                <th>{{'pcmtExecutionList.executedBy' | message}}</th>
+                <th>{{'pcmtExecutionList.description' | message}}</th>
+                <th>{{'pcmtExecutionList.status' | message}}</th>
+                <th>{{'pcmtExecutionList.actions' | message}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="execution in vm.executions">
+                <td>{{execution.startDate | openlmisDatetime}}</td>
+                <td>{{execution.endDate | openlmisDatetime}}</td>
+                <td>{{vm.periods[execution.processingPeriodId].name}}</td>
+
+                <td ng-if="execution.userId">{{vm.showUser(vm.usersMap[execution.userId])}}</td>
+                <td ng-if="!execution.userId">{{'pcmtExecutionList.executedBy.system' | message}}</td>
+
+                <td>{{execution.description}}</td>
+
+                <td>{{ 'pcmtExecutionList.executionStatus.' + execution.status | message}}</td>
+                <td>
+                    <button ng-if="execution.status != 'STARTED'" class="primary" ui-sref='.requestbody({id: execution.id})'>{{'pcmtExecutionList.showRequest' | message}}</button>
+                    <button ng-if="execution.response" class="primary" ui-sref='.responsebody({id: execution.id})'>{{'pcmtExecutionList.showResponse' | message}}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <openlmis-pagination list="vm.executions" paged-list="vm.items"/>
+</section>
