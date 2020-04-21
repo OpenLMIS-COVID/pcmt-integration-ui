@@ -42,4 +42,4 @@ services:
 
   image:
     build: .
-    image: openlmismw/pcmt-integration-ui
+    image: openlmis/pcmt-integration-ui
