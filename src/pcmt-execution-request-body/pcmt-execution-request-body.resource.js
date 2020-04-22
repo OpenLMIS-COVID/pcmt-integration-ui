@@ -19,28 +19,31 @@
 
     /**
      * @ngdoc service
-     * @name pcmt.ProcessingPeriodResource
+     * @name pcmt-execution-request-body.RequestBodyResource
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
+     * Implementation of the ExecutionResource interface. Communicates with the REST API of the OpenLMIS
      * server.
      */
 
     angular
-        .module('pcmt')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .module('pcmt-execution-request-body')
+        .factory('RequestBodyResource', RequestBodyResource);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    RequestBodyResource.$inject = ['OpenlmisResource', 'classExtender', '$resource', 'openlmisUrlFactory'];
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+    function RequestBodyResource(OpenlmisResource, classExtender, $resource, openlmisUrlFactory) {
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
+        classExtender.extend(RequestBodyResource, OpenlmisResource);
+        return RequestBodyResource;
 
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
+        function RequestBodyResource() {
+            var url = '/api/integrationExecutions/:id/request';
+            this.super(url);
+            this.resource = $resource(openlmisUrlFactory(url), {}, {
+                get: {
+                    method: 'GET'
+                }
             });
         }
     }

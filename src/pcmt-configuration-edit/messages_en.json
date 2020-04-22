@@ -1,0 +1,13 @@
+{
+    "pcmtConfigurationEdit.authType":"Authorization Type",
+    "pcmtConfigurationEdit.token":"Token",
+    "pcmtConfigurationEdit.username":"Username",
+    "pcmtConfigurationEdit.password":"Password",
+    "pcmtConfigurationEdit.name":"Name",
+    "pcmtConfigurationEdit.targetUrl":"Target URL",
+    "pcmtConfigurationEdit.editConfiguration":"Edit Configuration",
+    "pcmtConfigurationEdit.cancel":"Cancel",
+    "pcmtConfigurationEdit.configurationAddSuccessfully":"The configuration has been added successfully!",
+    "pcmtConfigurationEdit.configurationEditSuccessfully":"The configuration has been edited successfully!",
+    "pcmtConfigurationEdit.pageHasBeenRefreshed" : "The page has been refreshed."
+}

@@ -19,29 +19,40 @@
 
     /**
      * @ngdoc service
-     * @name pcmt.ProcessingPeriodResource
+     * @name pcmt.pcmtUrlFactory
      *
      * @description
-     * Implementation of the OpenlmisResource interface. Communicates with the REST API of the OpenLMIS
-     * server.
+     * Supplies application with pcmt URL.
      */
-
     angular
         .module('pcmt')
-        .factory('ProcessingPeriodResource', ProcessingPeriodResource);
+        .factory('pcmtUrlFactory', factory);
 
-    ProcessingPeriodResource.$inject = ['OpenlmisResource', 'classExtender'];
+    factory.$inject = ['openlmisUrlFactory', 'pathFactory'];
 
-    function ProcessingPeriodResource(OpenlmisResource, classExtender) {
+    function factory(openlmisUrlFactory, pathFactory) {
 
-        classExtender.extend(ProcessingPeriodResource, OpenlmisResource);
+        var pcmtUrl = '@@PCMT_SERVICE_URL';
 
-        return ProcessingPeriodResource;
-
-        function ProcessingPeriodResource() {
-            this.super('/api/processingPeriods', {
-                paginated: true
-            });
+        if (pcmtUrl.substr(0, 2) === '@@') {
+            pcmtUrl = '';
         }
+
+        /**
+         * @ngdoc method
+         * @methodOf pcmt.pcmtUrlFactory
+         * @name pcmtUrlFactory
+         *
+         * @description
+         * It parses the given URL and appends pcmt service URL to it.
+         *
+         * @param  {String} url pcmt URL from grunt file
+         * @return {String}     pcmt URL
+         */
+        return function(url) {
+            url = pathFactory(pcmtUrl, url);
+            return openlmisUrlFactory(url);
+        };
     }
+
 })();
