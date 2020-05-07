@@ -33,7 +33,7 @@ describe('IntegrationResource', function() {
     it('should extend OpenlmisResource', function() {
         new this.IntegrationResource();
 
-        expect(this.OpenlmisResourceMock).toHaveBeenCalledWith('/api/integrationProgramSchedules', {
+        expect(this.OpenlmisResourceMock).toHaveBeenCalledWith('/api/integrationSchedules', {
             paginated: true
         });
     });

@@ -44,17 +44,11 @@
          * @return {Object}      the execution object
          */
         function Execution(json) {
-            this.id = json.id;
             this.manualExecution = json.manualExecution;
-            this.programId = json.programId;
-            this.facilityId = json.facilityId;
             this.processingPeriodId = json.processingPeriodId;
-            this.description = json.description;
-            this.targetUrl = json.targetUrl;
             this.startDate = json.startDate;
             this.endDate = json.endDate;
             this.response = json.response;
-            this.userId = json.userId;
         }
     }
 })();

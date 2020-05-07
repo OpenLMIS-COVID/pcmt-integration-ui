@@ -39,7 +39,7 @@
         return IntegrationResource;
 
         function IntegrationResource() {
-            this.super('/api/integrationProgramSchedules', {
+            this.super('/api/integrationSchedules', {
                 paginated: true
             });
         }

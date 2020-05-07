@@ -2,5 +2,6 @@
     "pcmt.serviceName": "PCMT Integration",
     "pcmt.executions": "Logs",
     "pcmt.integrations": "Schedule Integration",
-    "pcmt.configurations": "Configuration"
+    "pcmt.configurations": "Configuration",
+    "adminRoleForm.pcmtManagement": "Manage PCMT integrations"
 }
