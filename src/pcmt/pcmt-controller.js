@@ -52,9 +52,6 @@
             }, {
                 state: 'openlmis.administration.pcmt.integrations',
                 name: 'pcmt.integrations'
-            }, {
-                state: 'openlmis.administration.pcmt.configurations',
-                name: 'pcmt.configurations'
             }];
 
             if ($state.is('openlmis.administration.pcmt')) {
