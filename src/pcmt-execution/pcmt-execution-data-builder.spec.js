@@ -29,7 +29,6 @@
         ExecutionDataBuilder.prototype.withManualExecution = withManualExecution;
         ExecutionDataBuilder.prototype.withProgramId = withProgramId;
         ExecutionDataBuilder.prototype.withFacilityId = withFacilityId;
-        ExecutionDataBuilder.prototype.withProcessingPeriodId = withProcessingPeriodId;
         ExecutionDataBuilder.prototype.withDescription = withDescription;
         ExecutionDataBuilder.prototype.withTargetUrl = withTargetUrl;
         ExecutionDataBuilder.prototype.withStartDate = withStartDate;
@@ -49,7 +48,6 @@
             this.manualExecution = true;
             this.programId = 'P' + instanceNumber;
             this.facilityId = 'F' + instanceNumber;
-            this.processingPeriodId = 'PP' + instanceNumber;
             this.description = 'test-description';
             this.targetUrl = 'http://test.execution';
             this.startDate = new Date('2019-01-01');
@@ -79,11 +77,6 @@
 
         function withFacilityId(facilityId) {
             this.facilityId = facilityId;
-            return this;
-        }
-
-        function withProcessingPeriodId(processingPeriodId) {
-            this.processingPeriodId = processingPeriodId;
             return this;
         }
 
@@ -129,7 +122,6 @@
                 manualExecution: this.manualExecution,
                 programId: this.programId,
                 facilityId: this.facilityId,
-                processingPeriodId: this.processingPeriodId,
                 description: this.description,
                 targetUrl: this.targetUrl,
                 startDate: this.startDate,
