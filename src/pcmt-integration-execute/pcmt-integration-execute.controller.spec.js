@@ -27,18 +27,12 @@ describe('IntegrationExecuteController', function() {
             this.$state = $injector.get('$state');
             this.$rootScope = $injector.get('$rootScope');
             this.IntegrationDataBuilder = $injector.get('IntegrationDataBuilder');
-            this.PeriodDataBuilder = $injector.get('PeriodDataBuilder');
             this.ExecutionResource = $injector.get('ExecutionResource');
             this.loadingModalService = $injector.get('loadingModalService');
             this.notificationService = $injector.get('notificationService');
         });
 
         this.integration = new this.IntegrationDataBuilder().build();
-
-        this.periods = [
-            new this.PeriodDataBuilder().build(),
-            new this.PeriodDataBuilder().build()
-        ];
 
         this.description = 'Description';
 
@@ -49,7 +43,6 @@ describe('IntegrationExecuteController', function() {
 
         this.vm = this.$controller('IntegrationExecuteController', {
             integrationId: this.integration.id,
-            periods: this.periods,
             $stateParams: this.stateParams
         });
         this.vm.$onInit();

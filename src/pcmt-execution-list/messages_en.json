@@ -7,7 +7,6 @@
     "pcmtExecutionList.executionList": "The execution list",
     "pcmtExecutionList.startDate": "Submission Start Date",
     "pcmtExecutionList.endDate": "Submission End Date",
-    "pcmtExecutionList.relevantPeriod": "Relevant Period",
     "pcmtExecutionList.description": "Description",
     "pcmtExecutionList.status": "Result",
     "pcmtExecutionList.targetUrl": "Target URL",

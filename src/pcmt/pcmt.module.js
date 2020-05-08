@@ -31,7 +31,6 @@
         'openlmis-sort',
         'openlmis-modal-state',
         'openlmis-modal',
-        'referencedata-program',
-        'referencedata-period'
+        'referencedata-program'
     ]);
 })();

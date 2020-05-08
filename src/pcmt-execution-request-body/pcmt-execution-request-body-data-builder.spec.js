@@ -26,7 +26,6 @@
     function ExecutionRequestBodyDataBuilder(RequestBody) {
 
         ExecutionRequestBodyDataBuilder.prototype.withFacilities = withFacilities;
-        ExecutionRequestBodyDataBuilder.prototype.withReportingPeriod = withReportingPeriod;
         ExecutionRequestBodyDataBuilder.prototype.withDescription = withDescription;
         ExecutionRequestBodyDataBuilder.prototype.build = build;
         ExecutionRequestBodyDataBuilder.prototype.buildJson = buildJson;
@@ -38,17 +37,11 @@
 
             var instanceNumber = ExecutionRequestBodyDataBuilder.instanceNumber;
             this.facilities = 'F' + instanceNumber;
-            this.reportingPeriod = 'RP' + instanceNumber;
             this.description = 'test-description';
         }
 
         function withFacilities(facilities) {
             this.facilities = facilities;
-            return this;
-        }
-
-        function withReportingPeriod(reportingPeriod) {
-            this.reportingPeriod = reportingPeriod;
             return this;
         }
 
@@ -64,7 +57,6 @@
         function buildJson() {
             return {
                 facilities: this.facilities,
-                reportingPeriod: this.reportingPeriod,
                 description: this.description
             };
         }

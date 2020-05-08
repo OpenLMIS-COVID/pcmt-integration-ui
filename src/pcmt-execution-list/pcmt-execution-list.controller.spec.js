@@ -17,7 +17,6 @@ describe('ExecutionListController', function() {
 
     beforeEach(function() {
         module('pcmt-execution-list');
-        module('referencedata-period');
 
         inject(function($injector) {
             this.$q = $injector.get('$q');
@@ -25,7 +24,6 @@ describe('ExecutionListController', function() {
             this.$state = $injector.get('$state');
             this.$rootScope = $injector.get('$rootScope');
             this.ExecutionDataBuilder = $injector.get('ExecutionDataBuilder');
-            this.PeriodDataBuilder = $injector.get('PeriodDataBuilder');
             this.UserDataBuilder = $injector.get('UserDataBuilder');
             this.notificationService = $injector.get('notificationService');
         });
@@ -34,16 +32,6 @@ describe('ExecutionListController', function() {
             new this.ExecutionDataBuilder().build(),
             new this.ExecutionDataBuilder().build()
         ];
-
-        this.periods = [
-            new this.PeriodDataBuilder().build(),
-            new this.PeriodDataBuilder().build()
-        ];
-
-        this.periodsMap = this.periods.reduce(function(periodsMap, period) {
-            periodsMap[period.id] = period;
-            return periodsMap;
-        }, {});
 
         this.users = [
             new this.UserDataBuilder().buildReferenceDataUserJson(),
@@ -64,7 +52,6 @@ describe('ExecutionListController', function() {
         this.vm = this.$controller('ExecutionListController', {
             executions: this.executions,
             queueItems: this.queueItems,
-            periodsMap: this.periodsMap,
             usersMap: this.usersMap,
             users: this.users,
             $stateParams: this.stateParams
