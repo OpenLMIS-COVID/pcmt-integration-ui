@@ -55,7 +55,7 @@
             }];
 
             if ($state.is('openlmis.administration.pcmt')) {
-                $state.go('openlmis.administration.pcmt.executions');
+                $state.go('openlmis.administration.pcmt.integrations');
             }
         }
 
