@@ -1,8 +1,6 @@
 {
     "pcmtIntegrationEdit.editIntegration":"Edit Schedule",
     "pcmtIntegrationEdit.cancel":"Cancel",
-    "pcmtIntegrationEdit.program": "Program",
-    "pcmtIntegrationEdit.program.description": "To create a schedule integration for all programs, please leave this field blank",
     "pcmtIntegrationEdit.schedule": "Schedule",
     "pcmtIntegrationEdit.description": "Description",
     "pcmtIntegrationEdit.configuration": "Configuration",

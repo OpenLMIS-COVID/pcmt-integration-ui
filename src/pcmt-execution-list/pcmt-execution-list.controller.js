@@ -30,11 +30,11 @@
 
     controller.$inject = [
         '$state', '$stateParams', 'executions', 'queueItems',
-        'periodsMap', 'usersMap', 'users', 'notificationService'
+        'usersMap', 'users', 'notificationService'
     ];
 
     function controller($state, $stateParams, executions, queueItems,
-                        periodsMap, usersMap, users, notificationService) {
+                        usersMap, users, notificationService) {
 
         var vm = this;
 
@@ -76,7 +76,6 @@
             vm.queueItems = queueItems;
             vm.usersMap = usersMap;
             vm.users = users;
-            vm.periods = periodsMap;
         }
 
         /**

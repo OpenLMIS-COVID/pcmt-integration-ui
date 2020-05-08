@@ -66,17 +66,12 @@ describe('IntegrationExecuteController', function() {
             expect(this.vm.integrationId).toEqual(this.integrationId);
         });
 
-        it('should expose periods', function() {
-            expect(this.vm.periods).toEqual(this.periods);
-        });
-
     });
 
     describe('startManualExecution', function() {
 
         it('should call startManualExecution method', function() {
             this.vm.integrationId = this.integration.id;
-            this.vm.selectedPeriod = this.periods[0];
             this.vm.description = this.description;
 
             this.vm.startManualExecution();
@@ -86,7 +81,6 @@ describe('IntegrationExecuteController', function() {
             expect(this.ExecutionResource.prototype.startManualExecution)
                 .toHaveBeenCalledWith({
                     integrationId: this.integration.id,
-                    periodId: this.periods[0].id,
                     description: this.description
                 });
 

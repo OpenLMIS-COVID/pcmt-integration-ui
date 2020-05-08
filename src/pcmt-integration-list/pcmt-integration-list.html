@@ -6,20 +6,15 @@
         </caption>
         <thead>
             <tr>
-                <th>{{'pcmtIntegrationList.program' | message}}</th>
                 <th>{{'pcmtIntegrationEdit.schedule' | message}}</th>
                 <th>{{'pcmtIntegrationEdit.description' | message}}</th>
-                <th>{{'pcmtIntegrationList.configuration' | message}}</th>
                 <th>{{'pcmtIntegrationList.actions' | message}}</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="integration in vm.integrations">
-                <td ng-if="integration.programId">{{vm.programs[integration.programId].name}}</td>
-                <td ng-if="!integration.programId">{{ 'pcmtIntegrationList.allPrograms' | message }}</td>
                 <td><openlmis-cron-selection ng-model="integration.cronExpression" read-only="true"/></td>
                 <td>{{integration.description}}</td>
-                <td>{{integration.configuration.name}}</td>
                 <td>
                     <button class="primary" ui-sref=".edit({id: integration.id})">{{'pcmtIntegrationList.edit' | message}}</button>
                     <button ui-sref=".execute({id: integration.id})">{{'pcmtIntegrationList.execute' | message}}</button>

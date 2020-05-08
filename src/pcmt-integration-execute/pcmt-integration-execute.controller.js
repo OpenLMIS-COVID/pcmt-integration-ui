@@ -30,11 +30,11 @@
 
     controller.$inject = [
         '$state', '$stateParams', 'ExecutionResource',
-        'loadingModalService', 'periods', 'notificationService'
+        'loadingModalService', 'notificationService'
     ];
 
     function controller($state, $stateParams, ExecutionResource,
-                        loadingModalService, periods, notificationService) {
+                        loadingModalService, notificationService) {
 
         var vm = this;
 
@@ -53,17 +53,6 @@
          * A integration UUID.
          */
         vm.integrationId = undefined;
-
-        /**
-         * @ngdoc property
-         * @propertyOf pcmt-integration-execute:IntegrationExecuteController
-         * @name periods
-         * @type {Object}
-         *
-         * @description
-         * Holds options for period of executions.
-         */
-        vm.periods = undefined;
 
         /**
          * @ngdoc property
@@ -87,7 +76,6 @@
          */
         function onInit() {
             vm.integrationId = $stateParams.id;
-            vm.periods = periods;
         }
 
         /**
@@ -115,7 +103,6 @@
             return new ExecutionResource()
                 .startManualExecution({
                     integrationId: vm.integrationId,
-                    periodId: vm.selectedPeriod.id,
                     description: vm.description
                 })
                 .then(function() {

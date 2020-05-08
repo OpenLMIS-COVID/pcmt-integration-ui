@@ -86,10 +86,6 @@ describe('ExecutionListController', function() {
             expect(this.vm.queueItems).toEqual(this.queueItems);
         });
 
-        it('should expose periods', function() {
-            expect(this.vm.periods).toEqual(this.periodsMap);
-        });
-
         it('should expose users map', function() {
             expect(this.vm.usersMap).toEqual(this.usersMap);
         });

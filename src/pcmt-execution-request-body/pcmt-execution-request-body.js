@@ -46,7 +46,6 @@
         function RequestBody(json) {
             this.description = json.description;
             this.facilities = json.facilities;
-            this.reportingPeriod = json['reporting-period'];
         }
     }
 })();

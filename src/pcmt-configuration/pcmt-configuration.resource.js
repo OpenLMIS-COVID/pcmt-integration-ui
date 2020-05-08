@@ -39,7 +39,7 @@
         return ConfigurationResource;
 
         function ConfigurationResource() {
-            this.super('/api/integrationConfigurations', {
+            this.super('/api/integrationSchedules', {
                 paginated: true
             });
         }

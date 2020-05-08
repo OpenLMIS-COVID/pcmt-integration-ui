@@ -1,5 +1,4 @@
 {
-    "pcmtIntegrationExecute.period":"Period",
     "pcmtIntegrationExecute.description": "Description",
     "pcmtIntegrationExecute.execute":"Execute",
     "pcmtIntegrationExecute.execute.description": "For manual execution Integration to PCMT Integration Layer, please fill below and click the \"Execute\" button",

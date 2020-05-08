@@ -25,7 +25,6 @@ describe('ConfigurationListController', function() {
             this.$state = $injector.get('$state');
             this.$rootScope = $injector.get('$rootScope');
             this.ConfigurationDataBuilder = $injector.get('ConfigurationDataBuilder');
-            this.PeriodDataBuilder = $injector.get('PeriodDataBuilder');
             this.ConfigurationResource = $injector.get('ConfigurationResource');
             this.loadingModalService = $injector.get('loadingModalService');
             this.confirmService = $injector.get('confirmService');

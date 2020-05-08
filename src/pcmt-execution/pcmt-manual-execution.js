@@ -46,7 +46,6 @@
         function ManualExecution(json) {
             this.facilityId = json.facilityId;
             this.programId = json.programId;
-            this.periodId = json.periodId;
             this.description = json.description;
         }
     }

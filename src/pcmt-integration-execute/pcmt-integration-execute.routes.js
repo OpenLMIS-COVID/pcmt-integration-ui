@@ -29,18 +29,7 @@
             controller: 'IntegrationExecuteController',
             controllerAs: 'vm',
             templateUrl: 'pcmt-integration-execute/pcmt-integration-execute.html',
-            url: '/:id/execute',
-            resolve: {
-                periods: function(ProcessingPeriodResource) {
-                    return new ProcessingPeriodResource()
-                        .query({
-                            sort: 'startDate,DESC'
-                        })
-                        .then(function(page) {
-                            return page.content;
-                        });
-                }
-            }
+            url: '/:id/execute'
         });
     }
 })();
