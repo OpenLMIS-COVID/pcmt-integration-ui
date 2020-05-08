@@ -45,6 +45,7 @@
          */
         function Execution(json) {
             this.manualExecution = json.manualExecution;
+            this.processingPeriodId = json.processingPeriodId;
             this.startDate = json.startDate;
             this.endDate = json.endDate;
             this.response = json.response;

@@ -43,11 +43,37 @@
                 queueItems: function(ExecutionQueueResource) {
                     return new ExecutionQueueResource().query();
                 },
-                periods: function(executions, queueItems) {
+                periods: function(executions, queueItems, ProcessingPeriodResource) {
                     if ((!executions || executions.length === 0)
                         && (!queueItems || queueItems.length === 0)) {
                         return [];
                     }
+
+                    var periodIds = [];
+
+                    if (executions) {
+                        executions.forEach(function(execution) {
+                            if (periodIds.indexOf(execution.processingPeriodId) < 0) {
+                                periodIds.push(execution.processingPeriodId);
+                            }
+                        });
+                    }
+
+                    if (queueItems) {
+                        queueItems.forEach(function(queueItem) {
+                            if (periodIds.indexOf(queueItem.processingPeriodId) < 0) {
+                                periodIds.push(queueItem.processingPeriodId);
+                            }
+                        });
+                    }
+
+                    return new ProcessingPeriodResource()
+                        .query({
+                            id: periodIds
+                        })
+                        .then(function(page) {
+                            return page.content;
+                        });
                 },
                 periodsMap: function(periods) {
                     return periods.reduce(function(periodsMap, period) {

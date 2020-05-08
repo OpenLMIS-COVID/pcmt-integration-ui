@@ -21,7 +21,7 @@
         <tbody>
             <tr ng-repeat="queueItem in vm.queueItems">
                 <td>{{queueItem.executionTime | openlmisDatetime}}</td>
-                <td> - </td>
+                <td>{{vm.periods[queueItem.processingPeriodId].name}}</td>
 
                 <td ng-if="queueItem.userId">{{vm.showUser(vm.usersMap[queueItem.userId])}}</td>
                 <td ng-if="!queueItem.userId">{{'pcmtExecutionList.executedBy.system' | message}}</td>
@@ -53,7 +53,7 @@
             <tr ng-repeat="execution in vm.executions">
                 <td>{{execution.startDate | openlmisDatetime}}</td>
                 <td>{{execution.endDate | openlmisDatetime}}</td>
-                <td> - </td>
+                <td>{{vm.periods[execution.processingPeriodId].name}}</td>
 
                 <td ng-if="execution.userId">{{vm.showUser(vm.usersMap[execution.userId])}}</td>
                 <td ng-if="!execution.userId">{{'pcmtExecutionList.executedBy.system' | message}}</td>
