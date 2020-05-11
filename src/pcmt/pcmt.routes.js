@@ -19,13 +19,14 @@
 
     angular.module('pcmt').config(routes);
 
-    routes.$inject = ['$stateProvider'];
+    routes.$inject = ['$stateProvider', 'ADMINISTRATION_RIGHTS'];
 
-    function routes($stateProvider) {
+    function routes($stateProvider, ADMINISTRATION_RIGHTS) {
         $stateProvider.state('openlmis.administration.pcmt', {
             label: 'pcmt.serviceName',
             showInNavigation: true,
             url: '/pcmt',
+            accessRights: [ADMINISTRATION_RIGHTS.PCMT_MANAGEMENT],
             controller: 'PcmtController',
             templateUrl: 'pcmt/pcmt.html',
             controllerAs: 'vm'
