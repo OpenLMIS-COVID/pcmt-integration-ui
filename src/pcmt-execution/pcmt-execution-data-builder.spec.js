@@ -27,10 +27,7 @@
 
         ExecutionDataBuilder.prototype.withId = withId;
         ExecutionDataBuilder.prototype.withManualExecution = withManualExecution;
-        ExecutionDataBuilder.prototype.withProgramId = withProgramId;
-        ExecutionDataBuilder.prototype.withFacilityId = withFacilityId;
         ExecutionDataBuilder.prototype.withDescription = withDescription;
-        ExecutionDataBuilder.prototype.withTargetUrl = withTargetUrl;
         ExecutionDataBuilder.prototype.withStartDate = withStartDate;
         ExecutionDataBuilder.prototype.withEndDate = withEndDate;
         ExecutionDataBuilder.prototype.withResponse = withResponse;
@@ -46,10 +43,7 @@
             var instanceNumber = ExecutionDataBuilder.instanceNumber;
             this.id = 'execution-id-' + instanceNumber;
             this.manualExecution = true;
-            this.programId = 'P' + instanceNumber;
-            this.facilityId = 'F' + instanceNumber;
             this.description = 'test-description';
-            this.targetUrl = 'http://test.execution';
             this.startDate = new Date('2019-01-01');
             this.endDate = new Date('2019-01-02');
             this.response = {
@@ -70,23 +64,8 @@
             return this;
         }
 
-        function withProgramId(programId) {
-            this.programId = programId;
-            return this;
-        }
-
-        function withFacilityId(facilityId) {
-            this.facilityId = facilityId;
-            return this;
-        }
-
         function withDescription(description) {
             this.description = description;
-            return this;
-        }
-
-        function withTargetUrl(targetUrl) {
-            this.targetUrl = targetUrl;
             return this;
         }
 
@@ -120,10 +99,7 @@
             return {
                 id: this.id,
                 manualExecution: this.manualExecution,
-                programId: this.programId,
-                facilityId: this.facilityId,
                 description: this.description,
-                targetUrl: this.targetUrl,
                 startDate: this.startDate,
                 endDate: this.endDate,
                 response: this.response,

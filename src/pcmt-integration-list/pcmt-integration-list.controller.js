@@ -31,12 +31,12 @@
     controller.$inject = [
         '$state', '$stateParams', '$q', 'IntegrationResource',
         'confirmService', 'loadingModalService', 'integrations',
-        'programsMap', 'notificationService'
+        'notificationService'
     ];
 
     function controller($state, $stateParams, $q, IntegrationResource,
                         confirmService, loadingModalService, integrations,
-                        programsMap, notificationService) {
+                        notificationService) {
 
         var vm = this;
 
@@ -53,7 +53,6 @@
          */
         function onInit() {
             vm.integrations = integrations;
-            vm.programs = programsMap;
         }
 
         function deleteIntegration(integration) {

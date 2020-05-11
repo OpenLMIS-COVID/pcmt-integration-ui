@@ -35,30 +35,6 @@
                     return paginationService.registerUrl($stateParams, function(stateParams) {
                         return new IntegrationResource().query(stateParams);
                     });
-                },
-                programs: function(integrations, ProgramResource) {
-                    if (!integrations || integrations.length === 0) {
-                        return [];
-                    }
-
-                    var programIds = integrations
-                        .map(function(integration) {
-                            return integration.programId;
-                        })
-                        .filter(function(programId) {
-                            return programId;
-                        });
-
-                    return new ProgramResource()
-                        .query({
-                            id: programIds
-                        });
-                },
-                programsMap: function(programs) {
-                    return programs.reduce(function(programsMap, program) {
-                        programsMap[program.id] = program;
-                        return programsMap;
-                    }, {});
                 }
             }
         });

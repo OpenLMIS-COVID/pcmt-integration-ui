@@ -18,7 +18,6 @@ describe('IntegrationAddEditController', function() {
     beforeEach(function() {
         module('pcmt-integration-edit');
         module('pcmt-integration');
-        module('pcmt-configuration');
 
         inject(function($injector) {
             this.$q = $injector.get('$q');
@@ -26,8 +25,6 @@ describe('IntegrationAddEditController', function() {
             this.$state = $injector.get('$state');
             this.$rootScope = $injector.get('$rootScope');
             this.IntegrationDataBuilder = $injector.get('IntegrationDataBuilder');
-            this.ProgramDataBuilder = $injector.get('ProgramDataBuilder');
-            this.ConfigurationDataBuilder = $injector.get('ConfigurationDataBuilder');
             this.IntegrationResource = $injector.get('IntegrationResource');
             this.loadingModalService = $injector.get('loadingModalService');
             this.confirmService = $injector.get('confirmService');
@@ -36,16 +33,6 @@ describe('IntegrationAddEditController', function() {
 
         this.integration = new this.IntegrationDataBuilder().build();
 
-        this.programs = [
-            new this.ProgramDataBuilder().build(),
-            new this.ProgramDataBuilder().build()
-        ];
-
-        this.configurations = [
-            new this.ConfigurationDataBuilder().build(),
-            new this.ConfigurationDataBuilder().build()
-        ];
-
         this.stateParams = {
             page: 0,
             size: 10
@@ -53,8 +40,6 @@ describe('IntegrationAddEditController', function() {
 
         this.vm = this.$controller('IntegrationAddEditController', {
             integration: this.integration,
-            programs: this.programs,
-            configurations: this.configurations,
             $stateParams: this.stateParams
         });
         this.vm.$onInit();
@@ -69,14 +54,6 @@ describe('IntegrationAddEditController', function() {
 
         it('should expose integrations array', function() {
             expect(this.vm.integration).toEqual(this.integration);
-        });
-
-        it('should expose programs', function() {
-            expect(this.vm.programs).toEqual(this.programs);
-        });
-
-        it('should expose configurations', function() {
-            expect(this.vm.configurations).toEqual(this.configurations);
         });
 
     });

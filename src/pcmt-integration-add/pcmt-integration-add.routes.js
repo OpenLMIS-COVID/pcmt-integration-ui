@@ -33,16 +33,6 @@
             resolve: {
                 integration: function(Integration) {
                     return new Integration({});
-                },
-                programs: function(ProgramResource) {
-                    return new ProgramResource().query();
-                },
-                configurations: function(ConfigurationResource) {
-                    return new ConfigurationResource()
-                        .query()
-                        .then(function(page) {
-                            return page.content;
-                        });
                 }
             }
         });

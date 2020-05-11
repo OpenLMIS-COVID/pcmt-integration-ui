@@ -2,7 +2,6 @@
     "pcmtIntegrationList.addSchedule": "Add Schedule",
     "pcmtIntegrationList.noIntegrations": "No schedule integration found.",
     "pcmtIntegrationList.program": "Program",
-    "pcmtIntegrationList.allPrograms": "All programs",
     "pcmtIntegrationList.schedule": "Schedule",
     "pcmtIntegrationEdit.description": "Description",
     "pcmtIntegrationList.actions": "Actions",

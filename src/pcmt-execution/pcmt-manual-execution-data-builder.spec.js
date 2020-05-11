@@ -25,8 +25,6 @@
 
     function ManualExecutionDataBuilder(ManualExecution) {
 
-        ManualExecutionDataBuilder.prototype.withProgramId = withProgramId;
-        ManualExecutionDataBuilder.prototype.withFacilityId = withFacilityId;
         ManualExecutionDataBuilder.prototype.withDescription = withDescription;
         ManualExecutionDataBuilder.prototype.build = build;
         ManualExecutionDataBuilder.prototype.buildJson = buildJson;
@@ -36,20 +34,7 @@
         function ManualExecutionDataBuilder() {
             ManualExecutionDataBuilder.instanceNumber = (ManualExecutionDataBuilder.instanceNumber || 0) + 1;
 
-            var instanceNumber = ManualExecutionDataBuilder.instanceNumber;
-            this.programId = 'P' + instanceNumber;
-            this.facilityId = 'F' + instanceNumber;
             this.description = 'test-description';
-        }
-
-        function withProgramId(programId) {
-            this.programId = programId;
-            return this;
-        }
-
-        function withFacilityId(facilityId) {
-            this.facilityId = facilityId;
-            return this;
         }
 
         function withDescription(description) {
@@ -63,8 +48,6 @@
 
         function buildJson() {
             return {
-                programId: this.programId,
-                facilityId: this.facilityId,
                 description: this.description
             };
         }

@@ -19,7 +19,6 @@ describe('IntegrationExecuteController', function() {
         module('pcmt-integration-execute');
         module('pcmt-integration');
         module('pcmt-execution');
-        module('pcmt-configuration');
 
         inject(function($injector) {
             this.$q = $injector.get('$q');

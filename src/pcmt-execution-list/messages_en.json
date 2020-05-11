@@ -9,7 +9,6 @@
     "pcmtExecutionList.endDate": "Submission End Date",
     "pcmtExecutionList.description": "Description",
     "pcmtExecutionList.status": "Result",
-    "pcmtExecutionList.targetUrl": "Target URL",
     "pcmtExecutionList.queueItems": "The execution queue",
     "pcmtExecutionList.queueItems.isEmpty": "The execution queue is empty",
     "pcmtExecutionList.executionTime": "Submission Date",

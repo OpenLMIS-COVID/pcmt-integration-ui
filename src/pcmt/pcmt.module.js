@@ -30,7 +30,6 @@
         'openlmis-main-state',
         'openlmis-sort',
         'openlmis-modal-state',
-        'openlmis-modal',
-        'referencedata-program'
+        'openlmis-modal'
     ]);
 })();

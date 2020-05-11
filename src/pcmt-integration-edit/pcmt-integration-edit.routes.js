@@ -37,16 +37,6 @@
                         .then(function(json) {
                             return new Integration(json);
                         });
-                },
-                programs: function(ProgramResource) {
-                    return new ProgramResource().query();
-                },
-                configurations: function(ConfigurationResource) {
-                    return new ConfigurationResource()
-                        .query()
-                        .then(function(page) {
-                            return page.content;
-                        });
                 }
             }
         });

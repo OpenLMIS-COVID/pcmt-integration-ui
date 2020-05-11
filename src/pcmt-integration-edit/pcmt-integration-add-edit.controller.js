@@ -28,11 +28,9 @@
         .module('pcmt-integration-edit')
         .controller('IntegrationAddEditController', controller);
 
-    controller.$inject = ['$state', 'IntegrationResource', 'integration',
-        'programs', 'configurations', 'notificationService'];
+    controller.$inject = ['$state', 'IntegrationResource', 'integration', 'notificationService'];
 
-    function controller($state, IntegrationResource, integration,
-                        programs, configurations, notificationService) {
+    function controller($state, IntegrationResource, integration, notificationService) {
 
         var vm = this;
 
@@ -52,30 +50,6 @@
         vm.days = undefined;
 
         /**
-         * @ngdoc property
-         * @propertyOf pcmt-integration-add-edit-general:IntegrationAddEditController
-         * @name programs
-         * @type {Array}
-         *
-
-         * @description
-         * List of all programs.
-         */
-        vm.programs = undefined;
-
-        /**
-         * @ngdoc property
-         * @propertyOf pcmt-integration-add-edit-general:IntegrationAddEditController
-         * @name configurations
-         * @type {Array}
-         *
-
-         * @description
-         * List of all configurations.
-         */
-        vm.configurations = undefined;
-
-        /**
          * @ngdoc method
          * @propertyOf pcmt-integration-add-edit-general:IntegrationAddEditController
          * @name $onInit
@@ -85,8 +59,6 @@
          */
         function onInit() {
             vm.integration = integration;
-            vm.programs = programs;
-            vm.configurations = configurations;
         }
 
         /**

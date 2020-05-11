@@ -18,7 +18,6 @@ describe('IntegrationListController', function() {
     beforeEach(function() {
         module('pcmt-integration-list');
         module('pcmt-integration');
-        module('pcmt-configuration');
 
         inject(function($injector) {
             this.$q = $injector.get('$q');
@@ -26,7 +25,6 @@ describe('IntegrationListController', function() {
             this.$state = $injector.get('$state');
             this.$rootScope = $injector.get('$rootScope');
             this.IntegrationDataBuilder = $injector.get('IntegrationDataBuilder');
-            this.ProgramDataBuilder = $injector.get('ProgramDataBuilder');
             this.IntegrationResource = $injector.get('IntegrationResource');
             this.loadingModalService = $injector.get('loadingModalService');
             this.confirmService = $injector.get('confirmService');
@@ -39,16 +37,6 @@ describe('IntegrationListController', function() {
             new this.IntegrationDataBuilder().build()
         ];
 
-        this.programs = [
-            new this.ProgramDataBuilder().build(),
-            new this.ProgramDataBuilder().build()
-        ];
-
-        this.programsMap = this.programs.reduce(function(programsMap, program) {
-            programsMap[program.id] = program;
-            return programsMap;
-        }, {});
-
         this.stateParams = {
             page: 0,
             size: 10
@@ -56,7 +44,6 @@ describe('IntegrationListController', function() {
 
         this.vm = this.$controller('IntegrationListController', {
             integrations: this.integrations,
-            programsMap: this.programsMap,
             $stateParams: this.stateParams
         });
         this.vm.$onInit();
@@ -73,10 +60,6 @@ describe('IntegrationListController', function() {
 
         it('should expose integrations array', function() {
             expect(this.vm.integrations).toEqual(this.integrations);
-        });
-
-        it('should expose programs', function() {
-            expect(this.vm.programs).toEqual(this.programsMap);
         });
 
     });

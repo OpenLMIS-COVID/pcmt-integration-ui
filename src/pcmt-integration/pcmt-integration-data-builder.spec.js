@@ -21,15 +21,13 @@
         .module('pcmt-integration')
         .factory('IntegrationDataBuilder', IntegrationDataBuilder);
 
-    IntegrationDataBuilder.$inject = ['Integration', 'ConfigurationDataBuilder'];
+    IntegrationDataBuilder.$inject = ['Integration'];
 
-    function IntegrationDataBuilder(Integration, ConfigurationDataBuilder) {
+    function IntegrationDataBuilder(Integration) {
 
         IntegrationDataBuilder.prototype.withId = withId;
-        IntegrationDataBuilder.prototype.withProgramId = withProgramId;
         IntegrationDataBuilder.prototype.withCronExpression = withCronExpression;
         IntegrationDataBuilder.prototype.withDescription = withDescription;
-        IntegrationDataBuilder.prototype.withConfiguration = withConfiguration;
         IntegrationDataBuilder.prototype.build = build;
         IntegrationDataBuilder.prototype.buildJson = buildJson;
 
@@ -40,19 +38,12 @@
 
             var instanceNumber = IntegrationDataBuilder.instanceNumber;
             this.id = 'integration-id-' + instanceNumber;
-            this.programId = 'P' + instanceNumber;
             this.cronExpression = '1 * * * * *';
             this.description = 'Description';
-            this.configuration = new ConfigurationDataBuilder().build();
         }
 
         function withId(id) {
             this.id = id;
-            return this;
-        }
-
-        function withProgramId(programId) {
-            this.programId = programId;
             return this;
         }
 
@@ -66,11 +57,6 @@
             return this;
         }
 
-        function withConfiguration(newConfiguration) {
-            this.configuration = newConfiguration;
-            return this;
-        }
-
         function build() {
             return new Integration(this.buildJson());
         }
@@ -78,10 +64,8 @@
         function buildJson() {
             return {
                 id: this.id,
-                programId: this.programId,
                 cronExpression: this.cronExpression,
-                description: this.description,
-                configuration: this.configuration
+                description: this.description
             };
         }
 

@@ -25,7 +25,6 @@
 
     function ExecutionRequestBodyDataBuilder(RequestBody) {
 
-        ExecutionRequestBodyDataBuilder.prototype.withFacilities = withFacilities;
         ExecutionRequestBodyDataBuilder.prototype.withDescription = withDescription;
         ExecutionRequestBodyDataBuilder.prototype.build = build;
         ExecutionRequestBodyDataBuilder.prototype.buildJson = buildJson;
@@ -35,14 +34,7 @@
         function ExecutionRequestBodyDataBuilder() {
             ExecutionRequestBodyDataBuilder.instanceNumber = (ExecutionRequestBodyDataBuilder.instanceNumber || 0) + 1;
 
-            var instanceNumber = ExecutionRequestBodyDataBuilder.instanceNumber;
-            this.facilities = 'F' + instanceNumber;
             this.description = 'test-description';
-        }
-
-        function withFacilities(facilities) {
-            this.facilities = facilities;
-            return this;
         }
 
         function withDescription(description) {
@@ -56,7 +48,6 @@
 
         function buildJson() {
             return {
-                facilities: this.facilities,
                 description: this.description
             };
         }

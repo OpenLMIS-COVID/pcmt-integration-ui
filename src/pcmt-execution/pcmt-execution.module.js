@@ -28,8 +28,6 @@
         'openlmis-config',
         'openlmis-date',
         'referencedata',
-        'referencedata-program',
-        'referencedata-facility',
         'referencedata-user',
         'pcmt'
     ]);

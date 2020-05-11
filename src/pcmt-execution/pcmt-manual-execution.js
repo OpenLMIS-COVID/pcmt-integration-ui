@@ -44,8 +44,6 @@
          * @return {Object}      the manual execution object
          */
         function ManualExecution(json) {
-            this.facilityId = json.facilityId;
-            this.programId = json.programId;
             this.description = json.description;
         }
     }
