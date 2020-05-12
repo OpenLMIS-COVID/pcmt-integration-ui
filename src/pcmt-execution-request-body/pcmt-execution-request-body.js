@@ -44,7 +44,7 @@
          * @return {Object}      the requestBody object
          */
         function RequestBody(json) {
-            this.description = json.description;
+            this.request = json;
         }
     }
 })();
